@@ -5,7 +5,8 @@
 
 class Disp {
 	private:
-		Disp(const Disp& disp) {}
+		void operator = (const Disp& display) {}
+		Disp(const Disp& display) {}
 
 		SDL_Window* m_window;
 		SDL_GLContext m_glContext;

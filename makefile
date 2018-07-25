@@ -6,7 +6,7 @@
 WORKDIR = `pwd`
 
 CC = gcc
-CXX = g++
+CXX = g++ -std=c++11
 AR = ar
 LD = g++
 WINDRES = windres
@@ -27,7 +27,7 @@ LIB_DEBUG = $(LIB)
 LDFLAGS_DEBUG = $(LDFLAGS)
 OBJDIR_DEBUG = obj/Debug
 DEP_DEBUG = 
-OUT_DEBUG = bin/Debug/OpenGLTest
+OUT_DEBUG = OpenGLTest
 
 INC_RELEASE = $(INC)
 CFLAGS_RELEASE = $(CFLAGS) -O2
@@ -77,8 +77,8 @@ $(OBJDIR_DEBUG)/mesh.o: mesh.cpp
 $(OBJDIR_DEBUG)/main.o: main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)/main.o
 
-$(OBJDIR_DEBUG)/display.o: display.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c display.cpp -o $(OBJDIR_DEBUG)/display.o
+$(OBJDIR_DEBUG)/display.o: disp.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c disp.cpp -o $(OBJDIR_DEBUG)/display.o
 
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
@@ -114,8 +114,8 @@ $(OBJDIR_RELEASE)/mesh.o: mesh.cpp
 $(OBJDIR_RELEASE)/main.o: main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
 
-$(OBJDIR_RELEASE)/display.o: display.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c display.cpp -o $(OBJDIR_RELEASE)/display.o
+$(OBJDIR_RELEASE)/display.o: disp.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c disp.cpp -o $(OBJDIR_RELEASE)/display.o
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)
