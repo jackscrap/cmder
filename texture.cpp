@@ -5,7 +5,7 @@
 
 Texture::Texture(const std::string& fName) {
 	int width, height, numComponents;
-	unsigned char* data = stbi_load(("res/" + fName + ".jpg").c_str(), &width, &height, &numComponents, 4);
+	unsigned char* data = stbi_load(("res/img/" + fName + ".jpg").c_str(), &width, &height, &numComponents, 4);
 
 	if(data == NULL) {
 		std::cerr << "Unable to load texture: " << fName << std::endl;

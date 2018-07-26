@@ -9,7 +9,7 @@
 #include "debugTimer.h"
 
 Mesh::Mesh(const std::string& fName) {
-	initMesh(OBJModel("res/" + fName + ".obj").ToIndexedModel());
+	initMesh(OBJModel("res/obj/" + fName + ".obj").ToIndexedModel());
 }
 
 Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices) {
