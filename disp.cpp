@@ -1,4 +1,4 @@
-#include "display.h"
+#include "disp.h"
 #include <GL/glew.h>
 #include <iostream>
 
@@ -21,6 +21,7 @@ Disp::Disp(int width, int height, const std::string& title) {
 			std::cerr << "Glew failed to initialize!" << std::endl;
     }
 
+
 	glEnable(GL_DEPTH_TEST);
 
 	glEnable(GL_CULL_FACE);
@@ -33,11 +34,11 @@ Disp::~Disp() {
 	SDL_Quit();
 }
 
-void Disp::Clear(float r, float g, float b, float a) {
+void Disp::clear(float r, float g, float b, float a) {
 	glClearColor(r, g, b, a);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Disp::SwapBuffers() {
+void Disp::swapBuffers() {
 	SDL_GL_SwapWindow(m_window);
 }

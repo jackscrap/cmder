@@ -5,7 +5,6 @@
 
 class Disp {
 	private:
-		void operator = (const Disp& display) {}
 		Disp(const Disp& display) {}
 
 		SDL_Window* m_window;
@@ -14,8 +13,8 @@ class Disp {
 	public:
 		Disp(int width, int height, const std::string& title);
 
-		void Clear(float r, float g, float b, float a);
-		void SwapBuffers();
+		void clear(float r, float g, float b, float a);
+		void swapBuffers();
 
 		virtual ~Disp();
 };

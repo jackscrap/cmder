@@ -1,23 +1,20 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#pragma once
 
 #include <string>
+
 #include <GL/glew.h>
 
-class Texture
-{
-public:
-	Texture(const std::string& fileName);
+class Texture {
+	private:
+		Texture(const Texture& texture) {
+		}
 
-	void Bind();
+		GLuint m_texture;
 
-	virtual ~Texture();
-protected:
-private:
-	Texture(const Texture& texture) {}
-	void operator=(const Texture& texture) {}
+	public:
+		Texture(const std::string& fName);
 
-	GLuint m_texture;
+		void bind();
+
+		~Texture();
 };
-
-#endif
