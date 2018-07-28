@@ -9,8 +9,8 @@ class Shader {
 		static const unsigned int NUM_SHADERS = 2,
 								 							NUM_UNIFORMS = 3;
 
-		Shader(const Shader& shader) {
-		}
+		/* Shader(const Shader& shader) { */
+		/* } */
 
 		std::string loadShader(const std::string& fileName);
 		void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage);

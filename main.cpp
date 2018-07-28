@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <iostream>
 
 #include <SDL2/SDL.h>
 
@@ -9,7 +10,7 @@
 #include "shader.h"
 #include "texture.h"
 #include "transform.h"
-/* #include "obj.h" */
+#include "obj.h"
 
 std::map<std::string, const float> size = {
 	{
@@ -26,18 +27,38 @@ int main() {
 	Disp disp(size["wd"], size["ht"], "cmder");
 
 
-	Cam cam(glm::vec3(0.0f, 0.0f, -5.0f), size["wd"] / size["ht"], 0.1f, 100.0f);
+	Cam cam(glm::vec3(0.0f, 5.0f, -25.0f), size["wd"] / size["ht"], 0.1f, 100.0f);
 
 
-	Mesh mesh("jerry");
-	Shader shader("basicShader");
-	shader.bind();
-	Texture texture("bricks");
-	texture.bind();
+	/* Mesh mesh("monkey3"); */
+	/* Shader shader("basicShader"); */
+	/* Texture texture("bricks"); */
 
-	Transform transform;
+	/* shader.bind(); */
+	/* texture.bind(); */
 
-	/* Obj jerry(mesh, shader, texture); */
+	/* Transform transform; */
+
+
+	Mesh mesh2("monkey3");
+	Shader shader2("basicShader");
+	Texture texture2("bricks");
+
+	shader2.bind();
+	texture2.bind();
+
+	Transform transform2;
+
+	Obj obj(mesh2, shader2, texture2, cam, transform2);
+
+
+	/* Mesh terrain("terrain"); */
+	/* Shader shader3("grass"); */
+	/* shader3.bind(); */
+	/* Texture texture3("bricks"); */
+	/* texture3.bind(); */
+
+	/* Transform transform3; */
 
 
 	SDL_Event e;
@@ -48,16 +69,7 @@ int main() {
 		while (SDL_PollEvent(&e)) {
 			bool drag;
 
-			std::map<char, int> click = {
-				{
-					'x',
-					0
-				},
-				{
-					'y',
-					0
-				}
-			};
+			std::map<char, int> click;
 
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				drag = true;
@@ -73,23 +85,14 @@ int main() {
 
 			if (drag) {
 				if (e.type == SDL_MOUSEMOTION) {
-					std::map<char, int> pos = {
-						{
-							'x',
-							0
-						},
-						{
-							'y',
-							0
-						}
-					};
+					std::map<char, int> pos;
 
 					SDL_GetMouseState(&pos['x'], &pos['y']);
 
 					cam.setPos({
 							(click['x'] - pos['x']) / 1000.0f,
 							(click['y'] - pos['y']) / 1000.0f,
-							-5
+							cam.getPos()[2]
 							});
 				}
 			}
@@ -104,15 +107,18 @@ int main() {
 		}
 
 		disp.clear(0.0f, 0.0f, 0.0f, 1.0f);
+		/* disp.clear(0.53, 0.59, 0.43, 1); */
 
 
-		(*transform.getPos()).x = counter;
+		/* terrain.draw(); */
 
-		shader.update(transform, cam);
+		/* (*transform.getPos()).x = counter; */
+		/* shader.update(transform, cam); */
+		/* mesh.draw(); */
 
-		mesh.draw();
-
-		/* jerry.draw(); */
+		std::cout << (*obj.m_transform.getPos()).x << std::endl;
+		obj.m_shader.update(obj.m_transform, cam);
+		obj.m_mesh.draw();
 
 
 		disp.swapBuffers();

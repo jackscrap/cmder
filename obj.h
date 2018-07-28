@@ -5,13 +5,18 @@
 #include "mesh.h"
 #include "shader.h"
 #include "texture.h"
-#include "classTest.h"
+#include "cam.h"
+#include "transform.h"
 
 class Obj {
 	public:
-		Obj(std::string fName);
+		Mesh m_mesh;
+		Shader m_shader;
+		Texture m_texture;
+		Cam m_cam;
+		Transform m_transform;
 
-		classTest test;
+		Obj(Mesh mesh, Shader shader, Texture texture, Cam cam, Transform transform);
 
 		void draw();
 

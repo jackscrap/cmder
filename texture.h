@@ -6,8 +6,8 @@
 
 class Texture {
 	private:
-		Texture(const Texture& texture) {
-		}
+		/* Texture(const Texture& texture) { */
+		/* } */
 
 		GLuint m_texture;
 

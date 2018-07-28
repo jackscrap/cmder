@@ -13,8 +13,10 @@ struct Cam {
 	public:
 		Cam(const glm::vec3& pos, float aspect, float zNear, float zFar) {
 			(*this).pos = pos;
+
 			(*this).forward = glm::vec3(0.0f, 0.0f, 1.0f);
 			(*this).up = glm::vec3(0.0f, 1.0f, 0.0f);
+
 			(*this).projection = glm::perspective(70.0f, aspect, zNear, zFar);
 		}
 
@@ -29,15 +31,6 @@ struct Cam {
 		void setPos(glm::vec3 pos) {
 			(*this).pos = pos;
 		}
-
-		/* void moveForward(float amt) { */
-		/* 	pos += forward * amt; */
-		/* } */
-
-		/* void moveRight(float amt) */
-		/* { */
-		/* 	pos += glm::cross(up, forward) * amt; */
-		/* } */
 
 		//void Pitch(float angle) {
 		//	glm::vec3 right = glm::normalize(glm::cross(up, forward));

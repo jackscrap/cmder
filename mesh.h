@@ -11,6 +11,9 @@
 
 struct Vertex {
 	private:
+		/* Mesh(const Mesh& mesh) { */
+		/* } */
+
 		glm::vec3 pos;
 		glm::vec2 texCoord;
 		glm::vec3 normal;
@@ -45,9 +48,6 @@ enum MeshBufferPositions {
 class Mesh {
 	private:
 		static const unsigned int NUM_BUFFERS = 4;
-
-		Mesh(const Mesh& mesh) {
-		}
 
 		void initMesh(const IndexedModel& model);
 
