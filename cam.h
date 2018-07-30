@@ -12,16 +12,16 @@ struct Cam {
 
 	public:
 		Cam(const glm::vec3& pos, float aspect, float zNear, float zFar) {
-			(*this).pos = pos;
+			this->pos = pos;
 
-			(*this).forward = glm::vec3(0.0f, 0.0f, 1.0f);
-			(*this).up = glm::vec3(0.0f, 1.0f, 0.0f);
+			this->forward = glm::vec3(0.0f, 0.0f, 1.0f);
+			this->up = glm::vec3(0.0f, 1.0f, 0.0f);
 
-			(*this).projection = glm::perspective(70.0f, aspect, zNear, zFar);
+			this->projection = glm::perspective(70.0f, aspect, zNear, zFar);
 		}
 
-		inline glm::mat4 getViewProjection() const {
-			return projection * glm::lookAt(pos, pos + forward, up);
+		glm::mat4 getViewProjection() const {
+			return projection * glm::lookAt(pos, glm::vec3(0, 0, 0) + forward, up);
 		}
 
 		glm::vec3 getPos() {
@@ -29,7 +29,23 @@ struct Cam {
 		}
 
 		void setPos(glm::vec3 pos) {
-			(*this).pos = pos;
+			this->pos = pos;
+		}
+
+		void pan(float inc) {
+			this->setPos({
+					this->pos.x + inc,
+					this->pos.y,
+					this->pos.z
+					});
+		}
+
+		void zoom(float inc) {
+			this->setPos({
+					this->pos.x,
+					this->pos.y - (inc / 2),
+					this->pos.z + inc
+					});
 		}
 
 		//void Pitch(float angle) {
