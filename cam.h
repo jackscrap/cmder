@@ -43,7 +43,7 @@ struct Cam {
 		void zoom(float inc) {
 			this->setPos({
 					this->pos.x,
-					this->pos.y - (inc / 2),
+					this->pos.y - (inc * 0.6),
 					this->pos.z + inc
 					});
 		}

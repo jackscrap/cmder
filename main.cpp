@@ -28,7 +28,7 @@ int main() {
 	Disp disp(size["wd"], size["ht"], "cmder");
 
 
-	Cam cam(glm::vec3(0.0f, 5, -10), size["wd"] / size["ht"], 0.1f, 100.0f);
+	Cam cam(glm::vec3(0.0f, 25, -40), size["wd"] / size["ht"], 0.1f, 100.0f);
 
 
 	Mesh terrain("terrain");
