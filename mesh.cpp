@@ -71,7 +71,7 @@ void Mesh::draw() {
 }
 
 void Mesh::move(char axis) {
-	(*this).pos[axis] += 0.001;
+	(*this).pos[axis] = 5;
 }
 
 Mesh::~Mesh() {

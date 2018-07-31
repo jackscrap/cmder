@@ -1,22 +1,26 @@
 #pragma once
 
+#include <glm/glm.hpp>
+
 #include <string>
 
 #include "mesh.h"
 #include "shader.h"
 #include "texture.h"
-#include "cam.h"
 #include "transform.h"
+#include "cam.h"
 
 class Obj {
 	public:
 		Mesh m_mesh;
 		Shader m_shader;
 		Texture m_texture;
-		Cam m_cam;
 		Transform m_transform;
+		Cam m_cam;
 
-		Obj(Mesh mesh, Shader shader, Texture texture, Cam cam, Transform transform);
+		glm::vec3 m_pos;
+
+		Obj(Mesh& mesh, Shader& shader, Texture& texture, Transform& transform, Cam& cam);
 
 		void draw();
 

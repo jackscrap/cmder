@@ -38,7 +38,7 @@ int main() {
 	texture3.bind();
 
 
-	std::vector<Mesh> forest;
+	std::vector<Obj> forest;
 
 	/* for (int i = 0; i < 10; i++) { */
 	/* 	Mesh tree("tree"); */
@@ -50,24 +50,32 @@ int main() {
 	/* 	forest.push_back(tree); */
 	/* } */
 
-	Mesh tree("tree");
-	Shader shader4("grass");
-	shader4.bind();
-	Texture texture4("bricks");
-	texture4.bind();
+	Mesh tree6("tree");
 
-	Transform transform4;
-
-	Mesh tree2("tree");
 	Shader shader6("grass");
-	shader6.bind();
 	Texture texture6("bricks");
+
+	shader6.bind();
 	texture6.bind();
 
 	Transform transform6;
 
+	Obj tree(tree6, shader6, texture6, transform6, cam);
 	forest.push_back(tree);
-	/* forest.push_back(tree2); */
+
+
+	Mesh tree7("tree");
+
+	Shader shader7("grass");
+	Texture texture7("bricks");
+
+	shader7.bind();
+	texture7.bind();
+
+	Transform transform7;
+
+	Obj tree2(tree7, shader7, texture7, transform7, cam);
+	forest.push_back(tree2);
 
 
 	Mesh turret("turret");
@@ -140,30 +148,18 @@ int main() {
 
 
 		terrain.draw();
+		forest[1].draw();
 
 
-		glm::vec3 rot = glm::vec3(0, counter, 0);
+		/* glm::vec3 rot = glm::vec3(0, counter, 0); */
 
-		if (counter < deg) {
-			counter += 0.01;
-		}
-
-		transform5.setScale(glm::vec3(0.1f, 0.1f, 0.1f));
-		shader5.update(transform5, cam);
-		turret.draw();
-
-
-		forest[0].draw();
-
-		transform4.setRot(rot);
-		transform4.setPos(glm::vec3(0, 0, 5));
-		shader4.update(transform4, cam);
-
-		/* tree2.draw(); */
-
-		/* for (int i = 0; i < 10; i++) { */
-		/* 	forest[i].draw(); */
+		/* if (counter < deg) { */
+		/* 	counter += 0.01; */
 		/* } */
+
+		/* transform5.setScale(glm::vec3(0.1f, 0.1f, 0.1f)); */
+		/* shader5.update(transform5, cam); */
+		/* turret.draw(); */
 
 
 		disp.swapBuffers();

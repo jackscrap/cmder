@@ -13,9 +13,9 @@ struct Transform {
 
 	public:
 		Transform(const glm::vec3& pos = glm::vec3(), const glm::vec3& rot = glm::vec3(), const glm::vec3& scale = glm::vec3(1.0f, 1.0f, 1.0f)) {
-			(*this).pos = pos;
-			(*this).rot = rot;
-			(*this).scale = scale;
+			this->pos = pos;
+			this->rot = rot;
+			this->scale = scale;
 		}
 
 		inline glm::mat4 getModel() const {
@@ -37,27 +37,27 @@ struct Transform {
 			return VP * M;
 		}
 
-		inline glm::vec3* getPos() {
-			return &pos;
+		inline glm::vec3 getPos() {
+			return pos;
 		}
 
-		inline glm::vec3* getRot() {
-			return &rot;
+		inline glm::vec3 getRot() {
+			return rot;
 		}
 
-		inline glm::vec3* getScale() {
-			return &scale;
+		inline glm::vec3 getScale() {
+			return scale;
 		}
 
-		inline void SetPos(glm::vec3& pos) {
+		void setPos(glm::vec3 pos) {
 			(*this).pos = pos;
 		}
 
-		inline void SetRot(glm::vec3& rot) {
+		void setRot(glm::vec3 rot) {
 			(*this).rot = rot;
 		}
 
-		inline void SetScale(glm::vec3& scale) {
+		void setScale(glm::vec3 scale) {
 			(*this).scale = scale;
 		}
 };

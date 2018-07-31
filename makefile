@@ -1,12 +1,12 @@
 CC = g++
 DEPS = main.cpp cam.h debugTimer.h disp.cpp disp.h math3d.h mesh.cpp mesh.h obj_loader.cpp obj_loader.h shader.cpp shader.h stb_image.c stb_image.h texture.cpp texture.h transform.h util.h obj.h obj.cpp 
 GL = -lGL -lGLU -lGLEW -lglut -lSDL2
-STD = -std=c++11
+V = -std=c++11
 
-RELEASE = bin/cmder
+OUT = bin/cmder
 
 make: main.cpp
-	 $(CC) $(DEPS) $(GL) $(STD) -o $(RELEASE)
+	 $(CC) $(DEPS) $(GL) $(V) -o $(OUT)
 
 clean:
 	rm *.out
